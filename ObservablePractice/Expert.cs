@@ -7,9 +7,9 @@ using System.Reflection;
 
 namespace ObservablePractice
 {
-	public class Expert : AObserver<int>
+	public class Expert : AObserver<string>
 	{
-		public Expert(IObservable<int> observable) : base(observable)
+		public Expert(IObservable<string> observable) : base(observable)
 		{
 			Console.WriteLine($"Expert {GetHashCode()} created.");
 		}

@@ -1,20 +1,20 @@
 ﻿namespace ObservablePractice
 {
-	public class Project : IObservable<int>
+	public class Project : IObservable<string>
 	{
-		private int _state;
+		private string _state;
 
 		public Project()
 		{
 		}
 
-		public Project(int state)
+		public Project(string state)
 		{
 			_state = state;
 		}
 
-		public LinkedList<AObserver<int>> Observers { get; set; } = new LinkedList<AObserver<int>>();
-		public int State
+		public LinkedList<AObserver<string>> Observers { get; set; } = new LinkedList<AObserver<string>>();
+		public string State
 		{
 			get => _state;
 			set
@@ -26,14 +26,14 @@
 
 		public void Announce()
 		{
-			Console.WriteLine("State of project changed");
-			foreach (AObserver<int> observer in Observers)
+			Console.WriteLine("State of project changed to " + State);
+			foreach (AObserver<string> observer in Observers)
 				observer.Notify();
 			Console.WriteLine("Notified " + Observers.Count + " experts");
 		}
 
-		public void Attach(AObserver<int> observer) => Observers.AddLast(observer);
+		public void Attach(AObserver<string> observer) => Observers.AddLast(observer);
 
-		public void Detach(AObserver<int> observer) => Observers.Remove(observer);
+		public void Detach(AObserver<string> observer) => Observers.Remove(observer);
 	}
 }

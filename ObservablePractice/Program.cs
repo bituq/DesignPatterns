@@ -1,12 +1,15 @@
 ﻿using ObservablePractice;
 
-Project p1 = new Project("Project A");
-Project p2 = new Project("Project B");
+Project[] projects = new Project[4];
+List<Expert> experts = new List<Expert>();
 
-Expert e1 = new Expert(p1);
-Expert e2 = new Expert(p1);
-Expert e3 = new Expert(p2);
+for (int i = 0; i < projects.Length; i++)
+	projects[i] = new Project(Convert.ToChar(65 + i % 26).ToString());
 
-p1.State = "Project C";
-p1.State = "Project D";
-p2.State = "Project E";
+foreach (Project project in projects)
+{
+	for (int i = 0; i < new Random().Next(4); i++)
+		experts.Add(new(project));
+}
+
+projects[0].State = Convert.ToChar(65 + new Random().Next(26)).ToString();

@@ -8,9 +8,9 @@ namespace ObservablePractice
 {
 	public abstract class AObserver<T>
 	{
-		protected IObservable<T> _observable;
+		protected AObservable<T> _observable;
 
-		public AObserver(IObservable<T> observable)
+		public AObserver(AObservable<T> observable)
 		{
 			_observable = observable;
 			_observable.Attach(this);

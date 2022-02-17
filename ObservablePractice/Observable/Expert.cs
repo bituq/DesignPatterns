@@ -9,15 +9,15 @@ namespace ObservablePractice
 {
 	public class Expert : AObserver<string>
 	{
-		public Expert(IObservable<string> observable) : base(observable)
+		public Expert(Project project) : base(project)
 		{
-			Console.WriteLine($"Expert {GetHashCode()} created.");
+			Console.WriteLine($"Expert {GetHashCode()} created and added to project {project.State}");
 		}
 
 		public override void Notify()
 		{
 			State = _observable.State;
-			Console.WriteLine($"Expert {GetHashCode()} got notified.");
+			Console.WriteLine($"Expert {GetHashCode()} got notified");
 		}
 	}
 }

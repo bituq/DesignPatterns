@@ -1,39 +1,22 @@
 ﻿namespace ObservablePractice
 {
-	public class Project : IObservable<string>
+	public class Project : AObservable<string>
 	{
-		private string _state;
-
-		public Project()
+		public Project() : base()
 		{
+			Console.WriteLine("Project created");
 		}
 
-		public Project(string state)
+		public Project(string state) : base(state)
 		{
-			_state = state;
+			Console.WriteLine($"Project {state} created");
 		}
 
-		public LinkedList<AObserver<string>> Observers { get; set; } = new LinkedList<AObserver<string>>();
-		public string State
-		{
-			get => _state;
-			set
-			{
-				_state = value;
-				Announce();
-			}
-		}
-
-		public void Announce()
+		protected override void Announce()
 		{
 			Console.WriteLine("State of project changed to " + State);
-			foreach (AObserver<string> observer in Observers)
-				observer.Notify();
+			base.Announce();
 			Console.WriteLine("Notified " + Observers.Count + " experts");
 		}
-
-		public void Attach(AObserver<string> observer) => Observers.AddLast(observer);
-
-		public void Detach(AObserver<string> observer) => Observers.Remove(observer);
 	}
 }

@@ -7,11 +7,11 @@ using System.Reflection;
 
 namespace ObservablePractice
 {
-	public class Expert : AObserver<string>
+	public class Expert : AObserver<ProjectState>
 	{
 		public Expert(Project project) : base(project)
 		{
-			Console.WriteLine($"Expert {GetHashCode()} created and added to project {project.State}");
+			Console.WriteLine($"Expert {GetHashCode()} created and added to project {project.State.Name}");
 		}
 
 		public override void Notify()

@@ -4,7 +4,7 @@ Project[] projects = new Project[4];
 List<Expert> experts = new List<Expert>();
 
 for (int i = 0; i < projects.Length; i++)
-	projects[i] = new Project(Convert.ToChar(65 + i % 26).ToString());
+	projects[i] = new Project(new() { Name = Convert.ToChar(65 + i % 26).ToString() });
 
 foreach (Project project in projects)
 {
@@ -12,4 +12,4 @@ foreach (Project project in projects)
 		experts.Add(new(project));
 }
 
-projects[0].State = Convert.ToChar(65 + new Random().Next(26)).ToString();
+projects[0].State = new() { Name = Convert.ToChar(65 + new Random().Next(26)).ToString() };

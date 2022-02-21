@@ -9,7 +9,7 @@ namespace ObservablePractice
 	public abstract class AObservable<T>
 	{
 		private T _state;
-		private List<AObserver<T>> _observers { get; set; } = new List<AObserver<T>>();
+		protected List<AObserver<T>> _observers { get; set; } = new List<AObserver<T>>();
 
 		public AObservable()
 		{
@@ -20,7 +20,6 @@ namespace ObservablePractice
 			_state = state;
 		}
 
-		protected IReadOnlyList<AObserver<T>> Observers => _observers;
 		public T State
 		{
 			get => _state;

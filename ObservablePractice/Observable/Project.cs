@@ -16,7 +16,7 @@
 		{
 			Console.WriteLine("State of project changed");
 			base.Announce();
-			Console.WriteLine("Notified " + Observers.Count + " experts");
+			Console.WriteLine("Notified " + _observers.Count + " experts");
 		}
 	}
 }
